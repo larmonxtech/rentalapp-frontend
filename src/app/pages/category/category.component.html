@@ -1,0 +1,14 @@
+<div class="contenedor-seccion">
+    <h1 class="titulo categoria-header">Categorías</h1>
+    <ul class="lista-items">
+        @for (category of categories; track $index) {
+            <li class="elemento-categoria">
+                <!-- <div class="icono-categoria">{{ category.name.charAt(0).toUpperCase() }}</div> -->
+                <div class="info">
+                    <span class="nombre">{{ category.name }}</span>
+                    <span class="id">ID del sistema: {{ category.idCategory }}</span>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
