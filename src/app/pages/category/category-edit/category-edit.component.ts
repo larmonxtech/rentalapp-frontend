@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -31,14 +31,15 @@ export class CategoryEditComponent {
 
   protected $form = signal(new FormGroup({
     idCategory: new FormControl<number | null>(null),
-    name: new FormControl<string>(''),
-    description: new FormControl<string>(''),
+    name: new FormControl<string>('', [Validators.required, Validators.minLength(3), Validators.maxLength(70)]),
+    description: new FormControl<string>('',[Validators.required, Validators.minLength(3), Validators.maxLength(200)]),
     status: new FormControl<boolean | null>(true),
   }));
 
   private readonly $params = toSignal(this.route.params, { initialValue: {} });
   protected $id = computed(() => this.$params()['id']);
   protected $isEdit = computed(() => !!this.$id()); //En JS es como decir  !! ¿Existe realmente este dato?, devuelve true o false
+  protected $f = computed(() => this.$form().controls);
 
   constructor() {
     effect(() => {
@@ -60,6 +61,8 @@ export class CategoryEditComponent {
     const form = this.$form();
     const isEdit = this.$isEdit();
     const id = this.$id();
+
+    if(form.invalid) return;
 
     const category: Category = form.value as Category;
     /*const patient: Category = new Category();

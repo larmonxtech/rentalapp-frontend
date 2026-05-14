@@ -1,4 +1,4 @@
-<form [formGroup]="$form()" (submit)="operate()" class="example-container" #frmPatient="ngForm">
+<form [formGroup]="$form()" (submit)="operate()" class="example-container" #frmCategory="ngForm">
 
     <div [hidden]="true">
         <mat-form-field>
@@ -10,11 +10,25 @@
     <mat-form-field>
         <mat-label>NAME</mat-label>
         <input matInput placeholder="Name" formControlName="name">
+        @if ($f()['name'].errors?.['required'] && $f()['name'].touched) {
+            <small class="invalid">Is required</small>
+        }
+        
+        @if ($f()['name'].errors?.['minlength'] && $f()['name'].touched) {
+            <small class="invalid">Minlength is 3</small>
+        }
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>DESCRIPTION</mat-label>
         <input matInput placeholder="Description" formControlName="description">
+        @if ($f()['description'].errors?.['required'] && $f()['description'].touched) {
+            <small class="invalid">Is required</small>
+        }
+        
+        @if ($f()['description'].errors?.['minlength'] && $f()['description'].touched) {
+            <small class="invalid">Minlength is 3</small>
+        }
     </mat-form-field>
 
     <mat-form-field>
@@ -22,7 +36,7 @@
         <input matInput placeholder="Status" formControlName="status">
     </mat-form-field>
 
-    <button mat-flat-button type="submit">
+    <button mat-flat-button type="submit" [disabled]="frmCategory.invalid">
         <span>OK</span>
         <mat-icon>done</mat-icon>
     </button>
