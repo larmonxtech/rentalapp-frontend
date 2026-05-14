@@ -81,10 +81,10 @@ export class CategoryComponent {
     this.$dataSource().filter = filterValue.trim().toLowerCase();
   }
 
-  delete(idPatient: number){
+  delete(idCategory: number){
     const ok = window.confirm('Are you sure to delete?');
     if(ok){
-      this.categoryService.delete(idPatient)
+      this.categoryService.delete(idCategory)
       .pipe(
         switchMap( () => this.categoryService.findAll() ),
         // tap( data => this.categoryService.setCategoryChange(data) ),
