@@ -75,7 +75,8 @@ export class CategoryEditComponent {
 
     operation$.pipe(
       switchMap(() => this.categoryService.findAll()),
-      tap(data => this.categoryService.setCategoryChange(data)),
+      // tap(data => this.categoryService.setCategoryChange(data)),
+      tap(data => this.categoryService.setListChange(data)),
       tap(() => this.categoryService.setMessageChange(isEdit ? 'UPDATED' : 'CREATED'))
     )
     .subscribe(() => {

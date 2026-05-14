@@ -2,25 +2,27 @@ import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../model/category';
+import { GenericService } from './generic.service';
+import { GenericSignalService } from './generic-signal.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryService {
+export class CategoryService extends GenericSignalService<Category> {
   //private url = 'http://localhost:9090/categories';
-  private url:string = `${environment.HOST}/categories`;
+  protected override url:string = `${environment.HOST}/categories`;
 
   //constructor(private http: HttpClient){}
-  private readonly http = inject(HttpClient);
+  //private readonly http = inject(HttpClient);
 
-  private readonly _categories = signal<Category[]>([]);
+  /*private readonly _categories = signal<Category[]>([]);
   private readonly _message = signal<string>('');
 
   readonly $categoriesChange = this._categories.asReadonly();
-  readonly $messageChange = this._message.asReadonly();
+  readonly $messageChange = this._message.asReadonly();*/
 
   // get post put delete
-  findAll(){
+  /*findAll(){
     return this.http.get<Category[]>(this.url);
   }
 
@@ -38,15 +40,15 @@ export class CategoryService {
 
   delete(id: number){
     return this.http.delete(`${this.url}/${id}`);
-  }
+  }*/
 
   ////set////
-  setCategoryChange(data: Category[]){
+  /*setCategoryChange(data: Category[]){
     
     this._categories.set(data);
   }
 
   setMessageChange(msg: string){
     this._message.set(msg);
-  }
+  }*/
 }
