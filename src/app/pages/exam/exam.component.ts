@@ -8,7 +8,6 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { switchMap, tap } from 'rxjs';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -24,8 +23,6 @@ import { ExamDialogComponent } from './exam-dialog/exam-dialog.component';
     MatSortModule,
     MatButtonModule,
     MatIconModule,
-    RouterLink,
-    RouterOutlet,
     MatSnackBarModule,
     MatDialogModule
   ],
