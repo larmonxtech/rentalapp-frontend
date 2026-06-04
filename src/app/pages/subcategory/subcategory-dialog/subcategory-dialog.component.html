@@ -1,0 +1,73 @@
+<mat-dialog-content [formGroup]="form">
+    <mat-toolbar>
+        <span>Subcategory Info</span>
+    </mat-toolbar>
+
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="nombre">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="idCategory">
+                @for (sc of $categories(); track sc.idCategory) {
+                    <mat-option [value]="sc.idCategory">{{ sc.name }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="estado">Estado</mat-checkbox>
+        
+        <button mat-flat-button (click)="operate()" [disabled]="form.invalid">
+            <span>OK</span>
+            <mat-icon>done</mat-icon>
+        </button>
+
+        <button mat-flat-button class="cancel-button" (click)="close()">
+            <span>Cancel</span>
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </div>
+
+</mat-dialog-content>
+
+<!-- <mat-dialog-content>
+    <mat-toolbar>
+        <span>Subcategory Info</span>
+    </mat-toolbar>
+
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput placeholder="Nombre" [(ngModel)]="$subcategory().nombre">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" placeholder="ID Category" [(ngModel)]="$subcategory().idCategory">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select [(ngModel)]="$subcategory().idCategory">
+                @for (sc of $categories(); track $index) {
+                    <mat-option [value]="sc.idCategory">{{ sc.name }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-checkbox [(ngModel)]="$subcategory().estado">Estado</mat-checkbox>
+        
+        <button mat-flat-button (click)="operate()">
+            <span>OK</span>
+            <mat-icon>done</mat-icon>
+        </button>
+
+        <button mat-flat-button class="cancel-button" (click)="close()">
+            <span>Cancel</span>
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </div>
+
+</mat-dialog-content>
+
+-->

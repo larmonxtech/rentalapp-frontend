@@ -53,6 +53,12 @@
             </button>
             <mat-divider></mat-divider>
             <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
+                routerLink="/pages/subcategory" >
+                <mat-icon>star_rate</mat-icon>
+                <span>Subcategory</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
                 routerLink="/pages/owner" >
                 <mat-icon>healing</mat-icon>
                 <span>Owner</span>
