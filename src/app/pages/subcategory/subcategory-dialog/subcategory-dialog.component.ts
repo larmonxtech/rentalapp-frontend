@@ -42,8 +42,8 @@ export class SubcategoryDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      idSubcategory: [this.data?.idSubcategory || 0],
-      idCategory: [this.data?.idCategory || '', Validators.required],
+      idSubcategory: [this.data?.idSubcategory || null ],
+      idCategory: [this.data?.idCategory || 0, Validators.required],
       nombre: [this.data?.nombre || '', Validators.required],
       estado: [this.data?.estado ?? true, Validators.required]
     });

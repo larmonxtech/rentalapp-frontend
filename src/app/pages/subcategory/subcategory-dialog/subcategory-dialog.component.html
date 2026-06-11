@@ -10,7 +10,7 @@
 
     <mat-form-field>
       <mat-label>CATEGORY</mat-label>
-      <mat-select formControlName="idCategory">
+      <mat-select formControlName="idCategory">   
         @for (sc of $categories(); track sc.idCategory) {
           <mat-option [value]="sc.idCategory">{{ sc.name }}</mat-option>
         }
