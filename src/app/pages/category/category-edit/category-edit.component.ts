@@ -9,6 +9,7 @@ import { CategoryService } from '../../../services/category.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Category } from '../../../model/category';
 import { switchMap, tap } from 'rxjs';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-category-edit',
@@ -18,6 +19,7 @@ import { switchMap, tap } from 'rxjs';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatSelectModule,
     RouterLink
   ],
   templateUrl: './category-edit.component.html',

@@ -1,35 +1,40 @@
 <mat-dialog-content [formGroup]="form">
-    <mat-toolbar>
-        <span>Subcategory Info</span>
-    </mat-toolbar>
+  <mat-toolbar>
+    <span>Subcategory Info</span>
+  </mat-toolbar>
 
-    <div class="example-container">
-        <mat-form-field>
-            <input matInput placeholder="Nombre" formControlName="nombre">
-        </mat-form-field>
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput placeholder="Nombre" formControlName="nombre" />
+    </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Category</mat-label>
-            <mat-select formControlName="idCategory">
-                @for (sc of $categories(); track sc.idCategory) {
-                    <mat-option [value]="sc.idCategory">{{ sc.name }}</mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>CATEGORY</mat-label>
+      <mat-select formControlName="idCategory">
+        @for (sc of $categories(); track sc.idCategory) {
+          <mat-option [value]="sc.idCategory">{{ sc.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-        <mat-checkbox formControlName="estado">Estado</mat-checkbox>
-        
-        <button mat-flat-button (click)="operate()" [disabled]="form.invalid">
-            <span>OK</span>
-            <mat-icon>done</mat-icon>
-        </button>
+    <mat-form-field>
+      <mat-label>STATUS</mat-label>
+      <mat-select formControlName="estado" placeholder="Status">
+        <mat-option [value]="true">ACTIVO</mat-option>
+        <mat-option [value]="false">INACTIVO</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <button mat-flat-button class="cancel-button" (click)="close()">
-            <span>Cancel</span>
-            <mat-icon>cancel</mat-icon>
-        </button>
-    </div>
+    <button mat-flat-button (click)="operate()" [disabled]="form.invalid">
+      <span>OK</span>
+      <mat-icon>done</mat-icon>
+    </button>
 
+    <button mat-flat-button class="cancel-button" (click)="close()">
+      <span>Cancel</span>
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
 </mat-dialog-content>
 
 <!-- <mat-dialog-content>

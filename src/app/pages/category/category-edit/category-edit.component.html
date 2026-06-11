@@ -1,49 +1,54 @@
 <form [formGroup]="$form()" (submit)="operate()" class="example-container" #frmCategory="ngForm">
-
-    <div [hidden]="true">
-        <mat-form-field>
-            <mat-label>ID</mat-label>
-            <input matInput placeholder="ID" formControlName="idCategory">
-        </mat-form-field>
-    </div>
-
+  <div [hidden]="true">
     <mat-form-field>
-        <mat-label>NAME</mat-label>
-        <input matInput placeholder="Name" formControlName="name">
-        @if ($f()['name'].errors?.['required'] && $f()['name'].touched) {
-            <small class="invalid">Is required</small>
-        }
-        
-        @if ($f()['name'].errors?.['minlength'] && $f()['name'].touched) {
-            <small class="invalid">Minlength is 3</small>
-        }
+      <mat-label>ID</mat-label>
+      <input matInput placeholder="ID" formControlName="idCategory" />
     </mat-form-field>
+  </div>
 
-    <mat-form-field>
-        <mat-label>DESCRIPTION</mat-label>
-        <input matInput placeholder="Description" formControlName="description">
-        @if ($f()['description'].errors?.['required'] && $f()['description'].touched) {
-            <small class="invalid">Is required</small>
-        }
-        
-        @if ($f()['description'].errors?.['minlength'] && $f()['description'].touched) {
-            <small class="invalid">Minlength is 3</small>
-        }
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>NAME</mat-label>
+    <input matInput placeholder="Name" formControlName="name" />
+    @if ($f()['name'].errors?.['required'] && $f()['name'].touched) {
+      <small class="invalid">Is required</small>
+    }
 
-    <mat-form-field>
-        <mat-label>STATUS</mat-label>
-        <input matInput placeholder="Status" formControlName="status">
-    </mat-form-field>
+    @if ($f()['name'].errors?.['minlength'] && $f()['name'].touched) {
+      <small class="invalid">Minlength is 3</small>
+    }
+  </mat-form-field>
 
-    <button mat-flat-button type="submit" [disabled]="frmCategory.invalid">
-        <span>OK</span>
-        <mat-icon>done</mat-icon>
-    </button>
+  <mat-form-field>
+    <mat-label>DESCRIPTION</mat-label>
+    <input matInput placeholder="Description" formControlName="description" />
+    @if ($f()['description'].errors?.['required'] && $f()['description'].touched) {
+      <small class="invalid">Is required</small>
+    }
 
-    <button mat-flat-button type="button" class="cancel-button" routerLink="/pages/category">
-        <span>Cancel</span>
-        <mat-icon>cancel</mat-icon>
-    </button>
+    @if ($f()['description'].errors?.['minlength'] && $f()['description'].touched) {
+      <small class="invalid">Minlength is 3</small>
+    }
+  </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>STATUS</mat-label>
+    <!-- <input matInput placeholder="Status" formControlName="status"> -->
+    <mat-select formControlName="status" placeholder="Status">
+      <mat-option [value]="true">ACTIVE</mat-option>
+      <mat-option [value]="false">INACTIVE</mat-option>
+    </mat-select>
+    @if ($f()['status'].errors?.['required'] && $f()['status'].touched) {
+      <small class="invalid">Is required</small>
+    }
+  </mat-form-field>
+
+  <button mat-flat-button type="submit" [disabled]="frmCategory.invalid">
+    <span>OK</span>
+    <mat-icon>done</mat-icon>
+  </button>
+
+  <button mat-flat-button type="button" class="cancel-button" routerLink="/pages/category">
+    <span>Cancel</span>
+    <mat-icon>cancel</mat-icon>
+  </button>
 </form>
